@@ -1,2 +1,3 @@
 # BolsaFuturoDigital_python
-aqui estão os exercícios propostos em sala de aula
+
+Repositório contendo os exercícios propostos em sala de aula no programa **Bolsa Futuro Digital**, desenvolvidos em Python.
