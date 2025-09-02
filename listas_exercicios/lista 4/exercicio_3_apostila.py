@@ -6,7 +6,8 @@ lista=[]
 
 for n in range(5):
     lista.append(int(input("digite um número: ")))
-print(lista)
-lista_ordenada=[lista.sort()]
 
-print(lista==lista_ordenada)
+lista_ord=lista.copy()
+lista_ord.sort()
+
+print(lista==lista_ord)
