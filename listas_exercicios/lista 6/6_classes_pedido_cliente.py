@@ -5,7 +5,7 @@ class Pedido:
         self.quantidade=quantidade
         self.cliente=cliente
 
-    #criando o método de exibir pedido
+    #criando o metodo de exibir pedido
     def exibir_pedido(self):
         print(f"O cliente {self.cliente.nome} fez o pedido de {self.quantidade} {self.produto}")
 
@@ -14,7 +14,7 @@ class Cliente:
     def __init__(self, nome):
         self.nome=nome
 
-    #criando o método fazer pedido
+    #criando o metodo fazer pedido
     def fazer_pedido(self,produto,quantidade):
         return Pedido(produto,quantidade,self) #a palavra self está se referindo ao 'cliente' da classe Pedido
 
@@ -24,5 +24,5 @@ cliente1=Cliente("João")
 #cliente faz o pedido
 pedido1=cliente1.fazer_pedido("Notebook",2)
 
-#chamando o método exibir pedido para mostrar o nome do cliente, o produto e quantidade
+#chamando o metodo exibir pedido para mostrar o nome do cliente, o produto e quantidade
 pedido1.exibir_pedido()

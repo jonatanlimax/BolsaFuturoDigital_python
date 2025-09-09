@@ -7,7 +7,6 @@ def mostrar(valor):
     print(f"\no dobro do número {numero} é {dobro(valor)}")
 
 #pedindo um número
-numero=int(input("\ndigite um número: "))
-
+numero=5
 #exibindo o dobro do número através da função mostrar
 mostrar(numero)

@@ -4,11 +4,11 @@ class Ponto:
         self.x=x
         self.y=y
 
-    #criando o método __str__ que representa o ponto como string
+    #criando o metodo __str__ que representa o ponto como string
     def __str__(self):
         return f"({self.x},{self.y})"
 
-    #criando o método __add__ que permite a soma dos dois pontos
+    #criando o metodo __add__ que permite a soma dos dois pontos
     def __add__(self, outro):
         return Ponto(self.x + outro.x, self.y + outro.y)
 
