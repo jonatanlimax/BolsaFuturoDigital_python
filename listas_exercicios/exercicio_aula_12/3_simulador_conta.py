@@ -49,7 +49,7 @@ def menu():
     print("[0] sair")
 
 def opcoes():
-    op=int(input(("Escolha uma das opções do menu acima: ")))
+    op=int(input("Escolha uma das opções do menu acima: "))
     if op == 1:
         cliente.adicionar_conta()
 

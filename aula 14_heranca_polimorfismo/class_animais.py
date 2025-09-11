@@ -14,15 +14,15 @@ class Gato(Animal):
     def som(self):
         print(f"{self.nome} faz: miau")
 #criando a classe Porco que herda Animal
-class Porco(Animal):
+class Vaca(Animal):
     def som(self):
-        print(f"{self.nome} faz: põe-põe")
+        print(f"{self.nome} faz: muuuuuuu")
 #criando a função para exibir o som de todos os animais
 def emitir_som(animal):
     animal.som()
 
 #criando a lista de animais
-animais=[Cachorro("Luck"),Gato("Makabea"),Porco("Porquinha"),Cachorro("Spaw")]
+animais=[Cachorro("Luck"),Gato("Makabea"),Vaca("malhada"),Cachorro("Spaw")]
 #exibindo o som de cada animal na lista
 for _ in animais:
     emitir_som(_)
