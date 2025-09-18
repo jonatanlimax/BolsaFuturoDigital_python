@@ -7,9 +7,31 @@ contador_contas = 0
 #criando a classe ContaBancaria
 class ContaBancaria:
     def __init__(self, titular="", conta=0, saldo=0):
-        self.titular=titular
-        self.conta=conta
-        self.saldo=saldo
+        self._titular=titular
+        self._conta=conta
+        self._saldo=saldo
+
+    #getter para titular
+    @property
+    def titular(self):
+        return self._titular
+
+    #getter para saldo
+    @property
+    def saldo(self):
+        return self._saldo
+
+    #setter para saldo
+    @saldo.setter
+    def saldo(self,novo_saldo):
+        if novo_saldo >= 0:
+            self._saldo = novo_saldo
+        else:
+            print("o saldo não pode ser negativo")
+    #getter para conta
+    @property
+    def conta(self):
+        return self._conta
 
     #criando o metodo depositar
     def depositar(self,valor):
@@ -36,7 +58,7 @@ class ContaBancaria:
             print("Saldo insuficiente")
     #criando o metodo sacar
     def sacar(self,valor):
-        if valor <= self.saldo:
+        if valor > 0 and valor <= self.saldo:
             self.saldo -= valor
             print(f"\nSaque de R${valor:.2f} realizado. Novo saldo: R${self.saldo:.2f}")
         else:
@@ -65,12 +87,16 @@ def exibir_contas():
 
 #função para escolher a conta
 def escolher_conta():
-    numero = int(input("\nDigite o número da conta: "))
-    for conta in contas:
-        if conta.conta == numero:
-            return conta
-    print("Conta não encontrada!")
-    return None
+    try:
+        numero = int(input("\nDigite o número da conta: "))
+        for conta in contas:
+            if conta.conta == numero:
+                return conta
+        print("Conta não encontrada!")
+        return None
+    except ValueError:
+        print("número de conta inválido. digite um número inteiro")
+        return None
 
 #criando função menu de opções
 def menu():
@@ -113,13 +139,16 @@ def opcoes():
     elif op == "7":
         conta_origem = escolher_conta()
         if conta_origem:
-            valor=float(input("Digite o valor que deseja transferir: "))
-            print("Agora escolha a conta de destino")
-            conta_destino = escolher_conta()
-            if conta_destino and conta_origem != conta_destino:
-                conta_origem.transferir(valor,conta_destino)
-            else:
-                print("não é possível transferir para a mesma conta")
+            try:
+                valor=float(input("Digite o valor que deseja transferir: "))
+                print("Agora escolha a conta de destino")
+                conta_destino = escolher_conta()
+                if conta_destino and conta_origem != conta_destino:
+                    conta_origem.transferir(valor,conta_destino)
+                else:
+                    print("não é possível transferir para a mesma conta")
+            except ValueError:
+                print("Valor inválido. digite um número")
     elif op =="0":
         print("obrigado por utilizar nosso banco, até mais!")
         return False
