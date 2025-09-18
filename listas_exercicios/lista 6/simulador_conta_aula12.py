@@ -25,7 +25,15 @@ class ContaBancaria:
         self.saldo+=aumento
         print(f"seu novo saldo é R${self.saldo:.2f}")
 
-
+    def transferir(self,valor,conta_destino):
+        if self.saldo >= valor > 0:
+            self.saldo -= valor
+            conta_destino.saldo += valor
+            print(f"transferência de R${valor:.2f} realizada com sucesso  de {self.titular} para {conta_destino.titular}")
+            self.extrato()
+            conta_destino.extrato()
+        else:
+            print("Saldo insuficiente")
     #criando o metodo sacar
     def sacar(self,valor):
         if valor <= self.saldo:
@@ -73,6 +81,7 @@ def menu():
     print("[4] sacar")
     print("[5] exibir extrato")
     print("[6] aplicar 5% de juros")
+    print("[7] transferir para outra conta")
     print("[0] sair")
     print("########################################")
 
@@ -101,6 +110,16 @@ def opcoes():
         conta=escolher_conta()
         if conta:
             conta.juros()
+    elif op == "7":
+        conta_origem = escolher_conta()
+        if conta_origem:
+            valor=float(input("Digite o valor que deseja transferir: "))
+            print("Agora escolha a conta de destino")
+            conta_destino = escolher_conta()
+            if conta_destino and conta_origem != conta_destino:
+                conta_origem.transferir(valor,conta_destino)
+            else:
+                print("não é possível transferir para a mesma conta")
     elif op =="0":
         print("obrigado por utilizar nosso banco, até mais!")
         return False
